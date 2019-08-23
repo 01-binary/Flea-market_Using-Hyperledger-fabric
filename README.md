@@ -1,7 +1,6 @@
 # Blockchain Web Application
+# Before start!
 
-  
-  
 >#### <i class="icon-file"><> CentOS setting for Hyperledger Fabric
 > 
 > sudo dhclient  
@@ -71,3 +70,8 @@
 > node app.js  
 > or supervisor app.js  
   
+# 프로젝트 명 : 블록체인을 활용한 중고거래 이력 관리 시스템 구성
+- 유니포인트 협업
+# 진행 시기 : 19.03.03 – 05.28 
+# 프로젝트 설명 : 블록체인을 활용하여, 해당 사이트 고객이 해당 사이트 외 다른 사이트의 판매자에 대한 기록까지 조회 가능
+
