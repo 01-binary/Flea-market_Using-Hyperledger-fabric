@@ -1,0 +1,74 @@
+<div class="cart_info">
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<!-- Column Titles -->
+				<div class="cart_info_columns clearfix">
+					<div class="cart_info_col cart_info_col_product">Product</div>
+					<div class="cart_info_col cart_info_col_price">상태</div>
+					<div class="cart_info_col cart_info_col_quantity">판매자</div>
+					<div class="cart_info_col cart_info_col_total">비고</div>
+				</div>
+			</div>
+		</div>
+		<div class="row cart_items_row">
+			<div class="col">
+
+				<!-- Cart Item -->
+				<% for (var index in my_request){%>
+					<div
+						class="cart_item d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
+						<!-- Name -->
+						<div class="cart_item_product d-flex flex-row align-items-center justify-content-start">
+							<div class="cart_item_image">
+								<div><img src=<%- my_request[index].img_path %> alt=""></div>
+							</div>
+							<div class="cart_item_name_container">
+								<div class="cart_item_name"><a href="#"><%- my_request[index].Product_name %></a></div>
+								<div class="cart_item_edit"><a href="#">Edit Product</a></div>
+							</div>
+						</div>
+						<!-- 상태 -->
+						<% if(my_request[index].status==1) {%>
+							<div class="cart_item_price"> 구매 진행중</div>
+							<!-- 구매자 -->
+							<div class="cart_item_buyer"><%- my_request[index].Member_id%></div>
+							<!-- Total -->
+							<div class="cart_item_total">
+								<button class="btn btn-danger" onclick="location.href='/request/cancel?pid=<%- my_request[index].Product_id %>'">취소</button>
+							</div>
+						<% } else if(my_request[index].status==2) { %>
+							<div class="cart_item_price">배송 중</div>
+							<!-- 구매자 -->
+							<div class="cart_item_buyer"><%- my_request[index].Member_id%></div>
+							<!-- Total -->
+							<div class="cart_item_total">
+								<button class="btn btn-success" onclick="location.href='/request/finish?pid=<%- my_request[index].Product_id %>'">구매 확정</button>
+								<button class="btn btn-danger" onclick="location.href='/request/report?pid=<%- my_request[index].Product_id %>'">거래 신고</button>
+							</div>
+						<% } else if(my_request[index].status==3){ %>
+							<div class="cart_item_price">거래완료</div>
+							<!-- 구매자 -->
+							<div class="cart_item_buyer"><%- my_request[index].Member_id%></div>
+							<!-- Total -->
+							<div class="cart_item_total">-</div>
+						<% } else if(my_request[index].status==4){ %>
+							<div class="cart_item_price">신고접수</div>
+							<!-- 구매자 -->
+							<div class="cart_item_buyer"><%- my_request[index].Member_id%></div>
+							<!-- Total -->
+							<div class="cart_item_total">-</div>
+						<% } else{ %>
+							<div class="cart_item_price">취소</div>
+							<!-- 구매자 -->
+							<div class="cart_item_buyer">-</div>
+							<!-- Total -->
+							<div class="cart_item_total">-</div>
+						<%} %>
+					</div>
+				<% } %>
+
+			</div>
+		</div>
+	</div>
+</div>

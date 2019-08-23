@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <title>RNA</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="RNA project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/styles/bootstrap4/bootstrap.min.css">
+    <link href="/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/animate.css">
+    <link rel="stylesheet" type="text/css" href="/styles/product.css">
+    <link rel="stylesheet" type="text/css" href="/styles/product_responsive.css">
+    <script src="/js/jquery-3.2.1.min.js"></script>
+
+    <style>
+        .container {
+            margin: 15px 0 25px;
+            padding-top: 6px;
+            width: 659px;
+        }
+
+        .container .r_name {
+            background: none repeat scroll 0 0 #FFFFFF;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .container .wrap {
+            padding-bottom: 3px;
+            width: 659px;
+        }
+
+        .container table {
+            border-left: 1px solid #CCCCCC;
+            border-right: 1px solid #CCCCCC;
+            float: left;
+        }
+
+        .container td {
+            border-top: 1px solid #CCCCCC;
+            border-bottom: 1px solid #CCCCCC;
+            color: #333333;
+            font: 13px/20px arial;
+            padding: 5px 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h3 style="text-align: center; color: black; margin-top: 20px">판매자 정보</h3>
+            <br><select id="docType" style="float: right" onchange="typeChange(this)">
+                <option value="all" <% if (type == "all") { %> selected <% } %>>전체</option>
+                <option value="transaction" <% if (type == "transaction") { %> selected <% } %>>거래이력</option>
+                <option value="report" <% if (type == "report") { %> selected <% } %>>신고이력</option>
+                </select><br><br>
+            <script>
+                function typeChange(e) {
+                    window.location = "/request/history/<%- sellerID %>?type=" + e.value;
+                }
+            </script>
+        <div class="wrap">
+            <table cellspacing="0" cellpadding="0" border="0" width="659">
+                <tbody>
+                    <tr>
+                        <td class="r_name">일시</td>
+                        <td class="r_name">판매자 ID</td>
+                        <td class="r_name">구매자 ID</td>
+                        <td class="r_name">상품명</td>
+                        <td class="r_name">상품가격</td>
+                        <td class="r_name">상태</td>
+                        <td class="r_name">상세정보</td>
+                    </tr>
+                    <% var len = 0; %>
+                    <% result.forEach(function (history, index) { %>
+                        <% if (type == "all" || history.docType ==type) { %>
+                        <tr>
+                            <td><%- history.timestamp %></td>
+                            <td><%- history.sellerID %></td>
+                            <td><%- history.buyerID %></td>
+                            <td><%- history.product %></td>
+                            <td><%- history.price %></td>
+                            <% if (history.docType == "transaction") { %>
+                                <% if (history.details == "match") { %>
+                                <td style="color: #fcb022">MATCH</td>
+                                <td>-</td>
+                                <% } else if (history.details == "shipping") { %>
+                                <td style="color: #224afcdc">Shipping</td>
+                                <td>-</td>
+                                <% } else if (history.details == "finish") { %>
+                                <td style="color: #44a038">FINISH</td>
+                                <td>-</td>
+                                <% } else if (history.details == "cancel") { %>
+                                <td style="color: #ff7b00">CANCEL</td>
+                                <td>-</td>
+                                <% } %>
+                            <% } else if (history.docType == "report") { %>
+                                <td style="color: #fc2222ec">REPORT</td>
+                                <td><%- history.details %></td>
+                            <% } %>
+                        <% len += 1; %>
+                        </tr>
+                        <% } %>
+                    <% }) %>
+                    <% if (len == 0) { %>
+                        <tr><td colspan="7">이력 정보가 존재하지 않습니다.</td></tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <script src="/styles/bootstrap4/popper.js"></script>
+    <script src="/styles/bootstrap4/bootstrap.min.js"></script>
+    <script src="/plugins/greensock/TweenMax.min.js"></script>
+    <script src="/plugins/greensock/TimelineMax.min.js"></script>
+    <script src="/plugins/scrollmagic/ScrollMagic.min.js"></script>
+    <script src="/plugins/greensock/animation.gsap.min.js"></script>
+    <script src="/plugins/greensock/ScrollToPlugin.min.js"></script>
+    <script src="/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+    <script src="/plugins/Isotope/isotope.pkgd.min.js"></script>
+    <script src="/plugins/easing/easing.js"></script>
+    <script src="/plugins/parallax-js-master/parallax.min.js"></script>
+</body>
+
+</html>

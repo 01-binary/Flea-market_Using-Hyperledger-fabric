@@ -1,0 +1,84 @@
+<!-- Product Details -->
+
+<div class="product_details">
+	<div class="container">
+		<div class="row details_row">
+
+			<!-- Product Image -->
+			<div class="col-lg-6">
+				<div class="details_image">
+					<div class="details_image_large"><img src=<%- items[0].img_path%> alt=""></div>
+				</div>
+			</div>
+
+			<!-- Product Content -->
+			<div class="col-lg-6">
+				<div class="details_content">
+					<div class="details_name"><%- items[0].Product_name %></div>
+					<div class="details_price">판매자 : <%- items[0].Member_id %></div><br>
+					<div class="details_price"><%- items[0].Product_price %> 원</div>
+
+					<!-- In Stock -->
+					<% if(items[0].status == 0) { %>
+						<div class="in_stock_container">
+							<div class="availability">진행 상황:</div>
+							<span>구매 신청 가능</span>
+						</div>	
+					<% } else if(items[0].status==3 || items[0].status == 4){ %>	
+						<div class="in_stock_container2">
+								<div class="availability">진행 상황:</div>
+								<span>거래 완료</span>
+						</div>
+					<% } else { %>	
+						<div class="in_stock_container2">
+								<div class="availability">진행 상황:</div>
+								<span>거래 진행중</span>
+						</div>		
+					<% } %>
+					
+					<div class="details_text">
+						<p><%- items[0].Product_content%></p>
+					</div>
+
+					<!-- Product Quantity -->
+					<div class="product_quantity_container">
+						<% if(items[0].status == 1) { %>
+							<div class="button cart_button"><a onclick="alert('구매가 진행중이므로 구매요청을 할 수 없습니다.');" >구매 요청</a></div>
+						<% } else if(items[0].status == 3 || items[0].status == 4){ %>
+							<div class="button cart_button"><a >거래 완료</a></div>
+						<% } else if(login != "login"){ %>
+							<div class="button cart_button"><a onclick="alert('로그인이 필요한 서비스입니다.');" >구매 요청</a></div>
+						<% } else if(items[0].Member_id == userid){ %>
+							<div class="button cart_button"><a onclick="alert('자신의 물품에 구매요청할 수 없습니다..');" >구매 요청</a></div>
+						<% } else {%>
+							<div class="button cart_button"><a href="/request/match?pid=<%- items[0].Product_id%>" onclick="buyrequest()">구매 요청</a> </div>
+						<% } %>
+						<script>
+							function buyrequest(){
+								alert("구매요청이 완료되었습니다.");
+							}	
+						</script>
+						<div class="button cart_button">
+							<a href="/request/history/<%- items[0].Member_id %>?type=all" onclick="window.open(this.href, '_blank', 'width=800, height=700, toolbars=no'); return false;">판매자 정보 보기</a>
+						</div>
+					</div>
+
+					<!-- Share -->
+					<div class="details_share">
+						<span>Share:</span>
+						<ul>
+							<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+							<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+							<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 지우지마시오 (칸채우기용) -->
+		<div class="row description_row"></div>
+		
+	</div>
+</div>

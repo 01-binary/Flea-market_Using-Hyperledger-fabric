@@ -1,0 +1,135 @@
+<!-- Products -->
+
+<div class="products">
+	<div class="container">
+		<div class="row">
+			<div class="col">
+
+				<!-- Product Sorting -->
+				<div class="sorting_bar d-flex flex-md-row flex-column align-items-md-center justify-content-md-start">
+					<div class="results">Showing <span><%- items.length %></span> results</div>
+					
+					<div class="sorting_container ml-md-auto">
+						<div class="sorting">
+							<ul class="item_sorting">
+								<li>
+									<span class="sorting_text">Sort by</span>
+									<i class="fa fa-chevron-down" aria-hidden="true"></i>
+									<ul>
+										<li class="product_sorting_btn"
+											data-isotope-option='{ "sortBy": "original-order" }'><span>Default</span>
+										</li>
+										<li class="product_sorting_btn" data-isotope-option='{ "sortBy": "price" }'>
+											<span>Price</span></li>
+										<li class="product_sorting_btn" data-isotope-option='{ "sortBy": "stars" }'>
+											<span>Name</span></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+
+				<div class="product_grid">
+					<% for (var index in items){%>
+						<!-- Product -->
+						<% if(items[index].status == 3 || items[index].status == 4) { %>
+							<div class="product">
+								<div class="product_image_sold"><img src= <%- items[index].img_path %> alt=""></div>
+								<div class="product_content">
+									<div class="product_title_sold">
+										<a href="product?pid=<%- items[index].Product_id%>"><%- items[index].Product_name %></a>
+									</div>
+									<div class="product_price_sold">
+										<%- items[index].Product_price %>원
+										<div class="product_status3"><span>거래 완료</span></div>	
+									</div>
+								</div>
+							</div>					
+						<% } else { %>
+							<div class="product">
+								<div class="product_image"><img src= <%- items[index].img_path %> alt=""></div>
+								<div class="product_content">
+									<div class="product_title">
+										<a href="product?pid=<%- items[index].Product_id%>"><%- items[index].Product_name %></a>
+									</div>
+									<div class="product_price">
+										<%- items[index].Product_price %>원
+										<% if(items[index].status == 0) { %>
+											<div class="product_status"><span>구매 신청 가능</span></div>	
+										
+										<% } else { %>
+											<div class="product_status2"><span>거래 진행중</span></div>
+										<% } %>
+									</div>
+								</div>
+							</div>
+						<% } %>
+
+					<% } %>
+				</div>
+				<div class="product_pagination" align=center>
+					<ul>
+						<li class="active"><a href="#">01.</a></li>
+						<li><a href="#">02.</a></li>
+						<li><a href="#">03.</a></li>
+					</ul>
+				</div>
+
+				<button class ="write_button pull-right" <% if(login != "login"){ %> onclick="alert('로그인이 필요한 서비스입니다.');return false;" <% }
+					else{ %>onclick="location.href='/items/registration'"<% } %> ><span>글쓰기</span></button>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Icon Boxes -->
+
+<div class="icon_boxes">
+	<div class="container">
+		<div class="row icon_box_row">
+
+			<!-- Icon Box -->
+			<div class="col-lg-4 icon_box_col">
+				<div class="icon_box">
+					<div class="icon_box_image"><img src="images/icon_1.svg" alt=""></div>
+					<div class="icon_box_title">Free Shipping Worldwide</div>
+					<div class="icon_box_text">
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec
+							molestie.</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Icon Box -->
+			<div class="col-lg-4 icon_box_col">
+				<div class="icon_box">
+					<div class="icon_box_image"><img src="images/icon_2.svg" alt=""></div>
+					<div class="icon_box_title">Free Returns</div>
+					<div class="icon_box_text">
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec
+							molestie.</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Icon Box -->
+			<div class="col-lg-4 icon_box_col">
+				<div class="icon_box">
+					<div class="icon_box_image"><img src="images/icon_3.svg" alt=""></div>
+					<div class="icon_box_title">24h Fast Support</div>
+					<div class="icon_box_text">
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec
+							molestie.</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

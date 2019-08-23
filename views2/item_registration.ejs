@@ -1,0 +1,54 @@
+<!-- Product Details -->
+
+<div class="product_details">
+    <form action="/items/registration" method="post" enctype="multipart/form-data">
+        <div class="container" style="margin: 3% auto 5% auto">
+            <h2>&nbsp;&nbsp;상품 등록하기</h2>
+            <table class="table table-hover">
+                <tbody>
+                    <tr>
+                        <td><input type="text" class="form-control" placeholder="상품명" name="product_name" maxlength="40" required></td>
+                    </tr>
+                    <tr>
+                        <td><input type="number" class="form-control" placeholder="가격 (원)" name="price" maxlength="40" required></td>
+                    </tr>
+                    <tr>
+                        <td><textarea type="text" class="form-control" placeholder="내용을 작성하세요" name="content" maxlength="1024" style="height: 400px;" required></textarea></td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- 커버이미지 들어오는 부분 (임시로 이미지를 넣어줬다)-->            
+            <div class="selectCover">            
+                <img class="upload_img" id="cover1" src="/product_img/default_img.jpg" style="width:275px">
+            </div> 
+            <!-- 파일등록 -->
+            <input id="fileName1" class="form-control" value="파일선택" disabled="disabled" style="width:275px; display: inline-block;">
+            <div class="fileRegiBtn">
+                <input type="file" id="myFileUp1" name="img1" onclick="fileUploadAction1();">
+            </div>
+            <input type="button" class="btn btn-primary pull-right" style="margin-left: 10px" value="취소" onclick="location.href='/items'">
+            <input type="submit" class="btn btn-primary pull-right" value="등록">
+            <script>
+                $(document).ready(function() {
+                    $("#myFileUp1").on("change", imgUpdate1);
+                });
+                function fileUploadAction1() {
+                    $("#myFileUP1").trigger("click");
+                }
+                function imgUpdate1(input) {
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            $('#cover1').attr('src', e.target.result); //cover src로 붙여지고
+                            $('#fileName1').val(input.files[0].name);  //파일선택 form으로 파일명이 들어온
+                        }
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                }
+                $("#myFileUp1").change(function () {
+                    imgUpdate1(this);
+                });
+            </script>
+        </div>
+    </form>
+</div>
