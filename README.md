@@ -3,9 +3,10 @@
 - 유니포인트 협업
 # 진행 시기 : 19.03.03 – 05.28 
 # 프로젝트 설명 : 블록체인을 활용하여, 해당 사이트 고객이 해당 사이트 외 다른 사이트의 판매자에 대한 기록까지 조회 가능
+<img width="445" alt="Dna24_1" src="https://user-images.githubusercontent.com/15652602/63577169-ca51cb80-c5c8-11e9-9fec-af0f11e81e22.png">
 <img width="408" alt="dna2" src="https://user-images.githubusercontent.com/15652602/63577165-c9b93500-c5c8-11e9-9488-9f89b468bf32.png">
 <img width="333" alt="dna3" src="https://user-images.githubusercontent.com/15652602/63577167-c9b93500-c5c8-11e9-9ab8-c41212f9aa3d.png">
-<img width="445" alt="Dna24_1" src="https://user-images.githubusercontent.com/15652602/63577169-ca51cb80-c5c8-11e9-9fec-af0f11e81e22.png">
+
 
 # Before start!
 
