@@ -7,8 +7,8 @@
 <img width="408" alt="dna2" src="https://user-images.githubusercontent.com/15652602/63577165-c9b93500-c5c8-11e9-9488-9f89b468bf32.png">
 <img width="333" alt="dna3" src="https://user-images.githubusercontent.com/15652602/63577167-c9b93500-c5c8-11e9-9ab8-c41212f9aa3d.png">
 <img width="408" alt="dna4" src="https://user-images.githubusercontent.com/15652602/63577359-2caacc00-c5c9-11e9-9a11-f791a218a3ad.png">
-## 위 사진에서 판매자의 정보는 블록체인 Hyperledger Fabric에서 query한 결과입니다.
-## 판매자의 주민등록번호 Hash 값을 통해 Query, invoke 등이 가능하며, invoke된 정보를 삭제되지 않으므로 위와 같이 판매자의 정보를 영구적으로 기록 가능합니다.
+위 사진에서 판매자의 정보는 블록체인 Hyperledger Fabric에서 query한 결과입니다.
+판매자의 주민등록번호 Hash 값을 통해 Query, invoke 등이 가능하며, invoke된 정보를 삭제되지 않으므로 위와 같이 판매자의 정보를 영구적으로 기록 가능합니다.
 
 
 # Before start!
